@@ -1,0 +1,2 @@
+export DPU_ARCH_JSON=/opt/vitis_ai/compiler/arch/DPUCZDX8G/ZCU104/arch.json
+ls $DPU_ARCH_JSON

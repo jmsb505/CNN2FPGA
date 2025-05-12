@@ -1,0 +1,7 @@
+cd /workspace/voxelmorph_FPGA
+mkdir -p compile_out
+
+vai_c_xir \
+  -x quantize_out/vxm_dense_brain_T1_3D_mse_quant.onnx \
+  -a $DPU_ARCH_JSON \
+  -o compile_out

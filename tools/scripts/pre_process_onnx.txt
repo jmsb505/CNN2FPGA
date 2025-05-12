@@ -1,0 +1,18 @@
+pip install onnxruntime-tools
+
+python3 - <<'EOF'
+from onnxruntime.quantization.shape_inference import quant_pre_process
+
+in_path  = "vxm_dense_brain_T1_3D_mse.onnx"
+out_path = "preproc.onnx"
+
+quant_pre_process(
+    input_model_path    = in_path,
+    output_model_path   = out_path,
+    skip_optimization   = False,  # fuse where possible
+    skip_onnx_shape     = False,  # infer missing tensor shapes
+    skip_symbolic_shape = True,   # your model isn't a transformer
+    auto_merge          = True    # merge dims on conflict
+)
+print(" Pre-processed ONNX model written to", out_path)
+EOF

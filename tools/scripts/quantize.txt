@@ -1,0 +1,38 @@
+cd /workspace/voxelmorph_FPGA
+mkdir -p quantize_out
+
+python3 - <<'EOF'
+import numpy as np
+from onnxruntime.quantization import (
+    quantize_static,
+    CalibrationDataReader,
+    QuantType,
+    QuantFormat
+)
+
+class OneSampleReader(CalibrationDataReader):
+    def __init__(self, names, shape):
+        # random volume no Calibration set yet
+        moving = np.random.rand(*shape).astype(np.float32)
+        fixed  = np.random.rand(*shape).astype(np.float32)
+        self.data = [{ names[0]: moving, names[1]: fixed }]
+    def get_next(self):
+        return self.data.pop(0) if self.data else None
+
+float_model = "preproc.onnx"
+quant_model = "quantize_out/vxm_dense_brain_T1_3D_mse_quant.onnx"
+
+reader = OneSampleReader(('vxm_dense_source_input', 'vxm_dense_target_input'), (1,160,192,224,1))
+
+quantize_static(
+    model_input            = float_model,
+    model_output           = quant_model,
+    calibration_data_reader= reader,
+    quant_format           = QuantFormat.QOperator,
+    activation_type        = QuantType.QInt8,
+    weight_type            = QuantType.QInt8,
+    per_channel            = False,
+    reduce_range           = False
+)
+print("Quantized ONNX written to", quant_model)
+EOF
