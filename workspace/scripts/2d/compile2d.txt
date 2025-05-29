@@ -1,0 +1,7 @@
+export DPU_ARCH_JSON=/opt/vitis_ai/compiler/arch/DPUCVDX8H/VCK50008PE/arch.json
+
+vai_c_tensorflow2 \
+  --model /workspace/outputs2d/quantize_out/q_model.h5 \
+  --arch $DPU_ARCH_JSON \
+  --output_dir /workspace/outputs2d/compile_out \
+  --net_name vxm2d

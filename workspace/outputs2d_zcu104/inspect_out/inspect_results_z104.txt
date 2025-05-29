@@ -1,0 +1,853 @@
+[MODEL INFO]:
+________________________________________________________________________________________________________________________
+Model Name: vxm_dense
+________________________________________________________________________________________________________________________
+ID          Name                    Type                    Device      Notes                                           
+========================================================================================================================
+0/36        input_wrapper_for_vxm_deInputLayer              INPUT                                                       
+            nse_source_input                                                                                            
+------------------------------------------------------------------------------------------------------------------------
+1/36        input_wrapper_for_vxm_deInputLayer              INPUT                                                       
+            nse_target_input                                                                                            
+------------------------------------------------------------------------------------------------------------------------
+2/36        vxm_dense_unet_input_conConcatenate             DPU                                                         
+            cat                                                                                                         
+------------------------------------------------------------------------------------------------------------------------
+3/36        vxm_dense_unet_enc_conv_Conv2D<linear>          CPU                                                         
+            0_0                                                                                                         
+------------------------------------------------------------------------------------------------------------------------
+4/36        vxm_dense_unet_enc_conv_LeakyReLU               CPU         Converted alpha 0.1 to 26./256. to match DPU    
+            0_0_activation                                              implementation; xir::Op{name =                  
+                                                                        quant_vxm_dense_unet_enc_conv_0_0, type =       
+                                                                        conv2d-fix} has been assigned to CPU: [DPU does 
+                                                                        not support activation type: LEAKYRELU. Its     
+                                                                        alpha is 0.200000, but DPU only support         
+                                                                        0.1015625.]                                     
+------------------------------------------------------------------------------------------------------------------------
+5/36        vxm_dense_unet_enc_pooliMaxPooling2D            DPU                                                         
+            ng_0                                                                                                        
+------------------------------------------------------------------------------------------------------------------------
+6/36        vxm_dense_unet_enc_conv_Conv2D<linear>          CPU                                                         
+            1_0                                                                                                         
+------------------------------------------------------------------------------------------------------------------------
+7/36        vxm_dense_unet_enc_conv_LeakyReLU               CPU         Converted alpha 0.1 to 26./256. to match DPU    
+            1_0_activation                                              implementation; xir::Op{name =                  
+                                                                        quant_vxm_dense_unet_enc_conv_1_0, type =       
+                                                                        conv2d-fix} has been assigned to CPU: [DPU does 
+                                                                        not support activation type: LEAKYRELU. Its     
+                                                                        alpha is 0.200000, but DPU only support         
+                                                                        0.1015625.]                                     
+------------------------------------------------------------------------------------------------------------------------
+8/36        vxm_dense_unet_enc_pooliMaxPooling2D            DPU                                                         
+            ng_1                                                                                                        
+------------------------------------------------------------------------------------------------------------------------
+9/36        vxm_dense_unet_enc_conv_Conv2D<linear>          CPU                                                         
+            2_0                                                                                                         
+------------------------------------------------------------------------------------------------------------------------
+10/36       vxm_dense_unet_enc_conv_LeakyReLU               CPU         Converted alpha 0.1 to 26./256. to match DPU    
+            2_0_activation                                              implementation; xir::Op{name =                  
+                                                                        quant_vxm_dense_unet_enc_conv_2_0, type =       
+                                                                        conv2d-fix} has been assigned to CPU: [DPU does 
+                                                                        not support activation type: LEAKYRELU. Its     
+                                                                        alpha is 0.200000, but DPU only support         
+                                                                        0.1015625.]                                     
+------------------------------------------------------------------------------------------------------------------------
+11/36       vxm_dense_unet_enc_pooliMaxPooling2D            DPU                                                         
+            ng_2                                                                                                        
+------------------------------------------------------------------------------------------------------------------------
+12/36       vxm_dense_unet_enc_conv_Conv2D<linear>          CPU                                                         
+            3_0                                                                                                         
+------------------------------------------------------------------------------------------------------------------------
+13/36       vxm_dense_unet_enc_conv_LeakyReLU               CPU         Converted alpha 0.1 to 26./256. to match DPU    
+            3_0_activation                                              implementation; xir::Op{name =                  
+                                                                        quant_vxm_dense_unet_enc_conv_3_0, type =       
+                                                                        conv2d-fix} has been assigned to CPU: [DPU does 
+                                                                        not support activation type: LEAKYRELU. Its     
+                                                                        alpha is 0.200000, but DPU only support         
+                                                                        0.1015625.]                                     
+------------------------------------------------------------------------------------------------------------------------
+14/36       vxm_dense_unet_enc_pooliMaxPooling2D            DPU                                                         
+            ng_3                                                                                                        
+------------------------------------------------------------------------------------------------------------------------
+15/36       vxm_dense_unet_dec_conv_Conv2D<linear>          CPU                                                         
+            3_0                                                                                                         
+------------------------------------------------------------------------------------------------------------------------
+16/36       vxm_dense_unet_dec_conv_LeakyReLU               CPU         Converted alpha 0.1 to 26./256. to match DPU    
+            3_0_activation                                              implementation; xir::Op{name =                  
+                                                                        quant_vxm_dense_unet_dec_conv_3_0, type =       
+                                                                        conv2d-fix} has been assigned to CPU: [DPU does 
+                                                                        not support activation type: LEAKYRELU. Its     
+                                                                        alpha is 0.200000, but DPU only support         
+                                                                        0.1015625.]                                     
+------------------------------------------------------------------------------------------------------------------------
+17/36       vxm_dense_unet_dec_upsamUpSampling2D            DPU                                                         
+            ple_3                                                                                                       
+------------------------------------------------------------------------------------------------------------------------
+18/36       vxm_dense_unet_dec_upsamConcatenate             DPU                                                         
+            ple_3_concat                                                                                                
+------------------------------------------------------------------------------------------------------------------------
+19/36       vxm_dense_unet_dec_conv_Conv2D<linear>          CPU                                                         
+            2_0                                                                                                         
+------------------------------------------------------------------------------------------------------------------------
+20/36       vxm_dense_unet_dec_conv_LeakyReLU               CPU         Converted alpha 0.1 to 26./256. to match DPU    
+            2_0_activation                                              implementation; xir::Op{name =                  
+                                                                        quant_vxm_dense_unet_dec_conv_2_0, type =       
+                                                                        conv2d-fix} has been assigned to CPU: [DPU does 
+                                                                        not support activation type: LEAKYRELU. Its     
+                                                                        alpha is 0.200000, but DPU only support         
+                                                                        0.1015625.]                                     
+------------------------------------------------------------------------------------------------------------------------
+21/36       vxm_dense_unet_dec_upsamUpSampling2D            DPU                                                         
+            ple_2                                                                                                       
+------------------------------------------------------------------------------------------------------------------------
+22/36       vxm_dense_unet_dec_upsamConcatenate             DPU                                                         
+            ple_2_concat                                                                                                
+------------------------------------------------------------------------------------------------------------------------
+23/36       vxm_dense_unet_dec_conv_Conv2D<linear>          CPU                                                         
+            1_0                                                                                                         
+------------------------------------------------------------------------------------------------------------------------
+24/36       vxm_dense_unet_dec_conv_LeakyReLU               CPU         Converted alpha 0.1 to 26./256. to match DPU    
+            1_0_activation                                              implementation; xir::Op{name =                  
+                                                                        quant_vxm_dense_unet_dec_conv_1_0, type =       
+                                                                        conv2d-fix} has been assigned to CPU: [DPU does 
+                                                                        not support activation type: LEAKYRELU. Its     
+                                                                        alpha is 0.200000, but DPU only support         
+                                                                        0.1015625.]                                     
+------------------------------------------------------------------------------------------------------------------------
+25/36       vxm_dense_unet_dec_upsamUpSampling2D            DPU                                                         
+            ple_1                                                                                                       
+------------------------------------------------------------------------------------------------------------------------
+26/36       vxm_dense_unet_dec_upsamConcatenate             DPU                                                         
+            ple_1_concat                                                                                                
+------------------------------------------------------------------------------------------------------------------------
+27/36       vxm_dense_unet_dec_conv_Conv2D<linear>          CPU                                                         
+            0_0                                                                                                         
+------------------------------------------------------------------------------------------------------------------------
+28/36       vxm_dense_unet_dec_conv_LeakyReLU               CPU         Converted alpha 0.1 to 26./256. to match DPU    
+            0_0_activation                                              implementation; xir::Op{name =                  
+                                                                        quant_vxm_dense_unet_dec_conv_0_0, type =       
+                                                                        conv2d-fix} has been assigned to CPU: [DPU does 
+                                                                        not support activation type: LEAKYRELU. Its     
+                                                                        alpha is 0.200000, but DPU only support         
+                                                                        0.1015625.]                                     
+------------------------------------------------------------------------------------------------------------------------
+29/36       vxm_dense_unet_dec_upsamUpSampling2D            DPU                                                         
+            ple_0                                                                                                       
+------------------------------------------------------------------------------------------------------------------------
+30/36       vxm_dense_unet_dec_upsamConcatenate             DPU                                                         
+            ple_0_concat                                                                                                
+------------------------------------------------------------------------------------------------------------------------
+31/36       vxm_dense_unet_dec_finalConv2D<linear>          CPU                                                         
+            _conv_0                                                                                                     
+------------------------------------------------------------------------------------------------------------------------
+32/36       vxm_dense_unet_dec_finalLeakyReLU               CPU         Converted alpha 0.1 to 26./256. to match DPU    
+            _conv_0_activation                                          implementation; xir::Op{name =                  
+                                                                        quant_vxm_dense_unet_dec_final_conv_0, type =   
+                                                                        conv2d-fix} has been assigned to CPU: [DPU does 
+                                                                        not support activation type: LEAKYRELU. Its     
+                                                                        alpha is 0.200000, but DPU only support         
+                                                                        0.1015625.]                                     
+------------------------------------------------------------------------------------------------------------------------
+33/36       vxm_dense_unet_dec_finalConv2D<linear>          CPU                                                         
+            _conv_1                                                                                                     
+------------------------------------------------------------------------------------------------------------------------
+34/36       vxm_dense_unet_dec_finalLeakyReLU               CPU         Converted alpha 0.1 to 26./256. to match DPU    
+            _conv_1_activation                                          implementation; xir::Op{name =                  
+                                                                        quant_vxm_dense_unet_dec_final_conv_1, type =   
+                                                                        conv2d-fix} has been assigned to CPU: [DPU does 
+                                                                        not support activation type: LEAKYRELU. Its     
+                                                                        alpha is 0.200000, but DPU only support         
+                                                                        0.1015625.]                                     
+------------------------------------------------------------------------------------------------------------------------
+35/36       vxm_dense_flow          Conv2D<linear>          DPU                                                         
+------------------------------------------------------------------------------------------------------------------------
+36/36       vxm_dense_transformer   SpatialTransformer      CPU                                                         
+------------------------------------------------------------------------------------------------------------------------
+========================================================================================================================
+[SUMMARY INFO]:
+- [Target Name]: DPUCZDX8G_ISA1_B4096
+- [Total Layers]: 37
+- [Layer Types]: InputLayer(2) Concatenate(5) Conv2D<linear>(11) LeakyReLU(10) MaxPooling2D(4) UpSampling2D(4) SpatialTransformer(1) 
+- [Partition Results]: INPUT(2) DPU(14) CPU(21) 
+========================================================================================================================
+[NOTES INFO]:
+- [4/36] Layer vxm_dense_unet_enc_conv_0_0_activation (Type:LeakyReLU, Device:CPU):
+    * Converted alpha 0.1 to 26./256. to match DPU implementation
+    * xir::Op{name = quant_vxm_dense_unet_enc_conv_0_0, type = conv2d-fix} has been assigned to CPU: [DPU does not support activation type: LEAKYRELU. Its alpha is 0.200000, but DPU only support 0.1015625.]
+- [7/36] Layer vxm_dense_unet_enc_conv_1_0_activation (Type:LeakyReLU, Device:CPU):
+    * Converted alpha 0.1 to 26./256. to match DPU implementation
+    * xir::Op{name = quant_vxm_dense_unet_enc_conv_1_0, type = conv2d-fix} has been assigned to CPU: [DPU does not support activation type: LEAKYRELU. Its alpha is 0.200000, but DPU only support 0.1015625.]
+- [10/36] Layer vxm_dense_unet_enc_conv_2_0_activation (Type:LeakyReLU, Device:CPU):
+    * Converted alpha 0.1 to 26./256. to match DPU implementation
+    * xir::Op{name = quant_vxm_dense_unet_enc_conv_2_0, type = conv2d-fix} has been assigned to CPU: [DPU does not support activation type: LEAKYRELU. Its alpha is 0.200000, but DPU only support 0.1015625.]
+- [13/36] Layer vxm_dense_unet_enc_conv_3_0_activation (Type:LeakyReLU, Device:CPU):
+    * Converted alpha 0.1 to 26./256. to match DPU implementation
+    * xir::Op{name = quant_vxm_dense_unet_enc_conv_3_0, type = conv2d-fix} has been assigned to CPU: [DPU does not support activation type: LEAKYRELU. Its alpha is 0.200000, but DPU only support 0.1015625.]
+- [16/36] Layer vxm_dense_unet_dec_conv_3_0_activation (Type:LeakyReLU, Device:CPU):
+    * Converted alpha 0.1 to 26./256. to match DPU implementation
+    * xir::Op{name = quant_vxm_dense_unet_dec_conv_3_0, type = conv2d-fix} has been assigned to CPU: [DPU does not support activation type: LEAKYRELU. Its alpha is 0.200000, but DPU only support 0.1015625.]
+- [20/36] Layer vxm_dense_unet_dec_conv_2_0_activation (Type:LeakyReLU, Device:CPU):
+    * Converted alpha 0.1 to 26./256. to match DPU implementation
+    * xir::Op{name = quant_vxm_dense_unet_dec_conv_2_0, type = conv2d-fix} has been assigned to CPU: [DPU does not support activation type: LEAKYRELU. Its alpha is 0.200000, but DPU only support 0.1015625.]
+- [24/36] Layer vxm_dense_unet_dec_conv_1_0_activation (Type:LeakyReLU, Device:CPU):
+    * Converted alpha 0.1 to 26./256. to match DPU implementation
+    * xir::Op{name = quant_vxm_dense_unet_dec_conv_1_0, type = conv2d-fix} has been assigned to CPU: [DPU does not support activation type: LEAKYRELU. Its alpha is 0.200000, but DPU only support 0.1015625.]
+- [28/36] Layer vxm_dense_unet_dec_conv_0_0_activation (Type:LeakyReLU, Device:CPU):
+    * Converted alpha 0.1 to 26./256. to match DPU implementation
+    * xir::Op{name = quant_vxm_dense_unet_dec_conv_0_0, type = conv2d-fix} has been assigned to CPU: [DPU does not support activation type: LEAKYRELU. Its alpha is 0.200000, but DPU only support 0.1015625.]
+- [32/36] Layer vxm_dense_unet_dec_final_conv_0_activation (Type:LeakyReLU, Device:CPU):
+    * Converted alpha 0.1 to 26./256. to match DPU implementation
+    * xir::Op{name = quant_vxm_dense_unet_dec_final_conv_0, type = conv2d-fix} has been assigned to CPU: [DPU does not support activation type: LEAKYRELU. Its alpha is 0.200000, but DPU only support 0.1015625.]
+- [34/36] Layer vxm_dense_unet_dec_final_conv_1_activation (Type:LeakyReLU, Device:CPU):
+    * Converted alpha 0.1 to 26./256. to match DPU implementation
+    * xir::Op{name = quant_vxm_dense_unet_dec_final_conv_1, type = conv2d-fix} has been assigned to CPU: [DPU does not support activation type: LEAKYRELU. Its alpha is 0.200000, but DPU only support 0.1015625.]
+========================================================================================================================
+
+Detailed Model Info: 
+
+Layer ID: 0
+Layer Name: input_wrapper_for_vxm_dense_source_input
+Layer Type: InputLayer
+Device: INPUT
+Notes: 
+    None
+Layer Config:
+{'batch_input_shape': (1, 224, 192, 1),
+ 'dtype': 'float64',
+ 'name': 'input_wrapper_for_vxm_dense_source_input',
+ 'ragged': False,
+ 'sparse': False}
+________________________________________________________________________________________________________________________
+Layer ID: 1
+Layer Name: input_wrapper_for_vxm_dense_target_input
+Layer Type: InputLayer
+Device: INPUT
+Notes: 
+    None
+Layer Config:
+{'batch_input_shape': (1, 224, 192, 1),
+ 'dtype': 'float64',
+ 'name': 'input_wrapper_for_vxm_dense_target_input',
+ 'ragged': False,
+ 'sparse': False}
+________________________________________________________________________________________________________________________
+Layer ID: 2
+Layer Name: vxm_dense_unet_input_concat
+Layer Type: Concatenate
+Device: DPU
+Notes: 
+    None
+Layer Config:
+{'axis': -1,
+ 'dtype': 'float32',
+ 'name': 'vxm_dense_unet_input_concat',
+ 'trainable': True}
+________________________________________________________________________________________________________________________
+Layer ID: 3
+Layer Name: vxm_dense_unet_enc_conv_0_0
+Layer Type: Conv2D
+Device: CPU
+Notes: 
+    None
+Layer Config:
+{'activation': 'linear',
+ 'activity_regularizer': None,
+ 'bias_constraint': None,
+ 'bias_initializer': {'class_name': 'Zeros', 'config': {}},
+ 'bias_regularizer': None,
+ 'data_format': 'channels_last',
+ 'dilation_rate': (1, 1),
+ 'dtype': 'float32',
+ 'filters': 32,
+ 'groups': 1,
+ 'kernel_constraint': None,
+ 'kernel_initializer': {'class_name': 'HeNormal', 'config': {'seed': None}},
+ 'kernel_regularizer': None,
+ 'kernel_size': (3, 3),
+ 'name': 'vxm_dense_unet_enc_conv_0_0',
+ 'padding': 'same',
+ 'strides': (1, 1),
+ 'trainable': True,
+ 'use_bias': True}
+________________________________________________________________________________________________________________________
+Layer ID: 4
+Layer Name: vxm_dense_unet_enc_conv_0_0_activation
+Layer Type: LeakyReLU
+Device: CPU
+Notes: 
+    1. Converted alpha 0.1 to 26./256. to match DPU implementation.
+    2. xir::Op{name = quant_vxm_dense_unet_enc_conv_0_0, type = conv2d-fix} has been assigned to CPU: [DPU does not support activation type: LEAKYRELU. Its alpha is 0.200000, but DPU only support 0.1015625.].
+Layer Config:
+{'alpha': 0.20000000298023224,
+ 'dtype': 'float32',
+ 'name': 'vxm_dense_unet_enc_conv_0_0_activation',
+ 'trainable': True}
+________________________________________________________________________________________________________________________
+Layer ID: 5
+Layer Name: vxm_dense_unet_enc_pooling_0
+Layer Type: MaxPooling2D
+Device: DPU
+Notes: 
+    None
+Layer Config:
+{'data_format': 'channels_last',
+ 'dtype': 'float32',
+ 'name': 'vxm_dense_unet_enc_pooling_0',
+ 'padding': 'valid',
+ 'pool_size': (2, 2),
+ 'strides': (2, 2),
+ 'trainable': True}
+________________________________________________________________________________________________________________________
+Layer ID: 6
+Layer Name: vxm_dense_unet_enc_conv_1_0
+Layer Type: Conv2D
+Device: CPU
+Notes: 
+    None
+Layer Config:
+{'activation': 'linear',
+ 'activity_regularizer': None,
+ 'bias_constraint': None,
+ 'bias_initializer': {'class_name': 'Zeros', 'config': {}},
+ 'bias_regularizer': None,
+ 'data_format': 'channels_last',
+ 'dilation_rate': (1, 1),
+ 'dtype': 'float32',
+ 'filters': 32,
+ 'groups': 1,
+ 'kernel_constraint': None,
+ 'kernel_initializer': {'class_name': 'HeNormal', 'config': {'seed': None}},
+ 'kernel_regularizer': None,
+ 'kernel_size': (3, 3),
+ 'name': 'vxm_dense_unet_enc_conv_1_0',
+ 'padding': 'same',
+ 'strides': (1, 1),
+ 'trainable': True,
+ 'use_bias': True}
+________________________________________________________________________________________________________________________
+Layer ID: 7
+Layer Name: vxm_dense_unet_enc_conv_1_0_activation
+Layer Type: LeakyReLU
+Device: CPU
+Notes: 
+    1. Converted alpha 0.1 to 26./256. to match DPU implementation.
+    2. xir::Op{name = quant_vxm_dense_unet_enc_conv_1_0, type = conv2d-fix} has been assigned to CPU: [DPU does not support activation type: LEAKYRELU. Its alpha is 0.200000, but DPU only support 0.1015625.].
+Layer Config:
+{'alpha': 0.20000000298023224,
+ 'dtype': 'float32',
+ 'name': 'vxm_dense_unet_enc_conv_1_0_activation',
+ 'trainable': True}
+________________________________________________________________________________________________________________________
+Layer ID: 8
+Layer Name: vxm_dense_unet_enc_pooling_1
+Layer Type: MaxPooling2D
+Device: DPU
+Notes: 
+    None
+Layer Config:
+{'data_format': 'channels_last',
+ 'dtype': 'float32',
+ 'name': 'vxm_dense_unet_enc_pooling_1',
+ 'padding': 'valid',
+ 'pool_size': (2, 2),
+ 'strides': (2, 2),
+ 'trainable': True}
+________________________________________________________________________________________________________________________
+Layer ID: 9
+Layer Name: vxm_dense_unet_enc_conv_2_0
+Layer Type: Conv2D
+Device: CPU
+Notes: 
+    None
+Layer Config:
+{'activation': 'linear',
+ 'activity_regularizer': None,
+ 'bias_constraint': None,
+ 'bias_initializer': {'class_name': 'Zeros', 'config': {}},
+ 'bias_regularizer': None,
+ 'data_format': 'channels_last',
+ 'dilation_rate': (1, 1),
+ 'dtype': 'float32',
+ 'filters': 32,
+ 'groups': 1,
+ 'kernel_constraint': None,
+ 'kernel_initializer': {'class_name': 'HeNormal', 'config': {'seed': None}},
+ 'kernel_regularizer': None,
+ 'kernel_size': (3, 3),
+ 'name': 'vxm_dense_unet_enc_conv_2_0',
+ 'padding': 'same',
+ 'strides': (1, 1),
+ 'trainable': True,
+ 'use_bias': True}
+________________________________________________________________________________________________________________________
+Layer ID: 10
+Layer Name: vxm_dense_unet_enc_conv_2_0_activation
+Layer Type: LeakyReLU
+Device: CPU
+Notes: 
+    1. Converted alpha 0.1 to 26./256. to match DPU implementation.
+    2. xir::Op{name = quant_vxm_dense_unet_enc_conv_2_0, type = conv2d-fix} has been assigned to CPU: [DPU does not support activation type: LEAKYRELU. Its alpha is 0.200000, but DPU only support 0.1015625.].
+Layer Config:
+{'alpha': 0.20000000298023224,
+ 'dtype': 'float32',
+ 'name': 'vxm_dense_unet_enc_conv_2_0_activation',
+ 'trainable': True}
+________________________________________________________________________________________________________________________
+Layer ID: 11
+Layer Name: vxm_dense_unet_enc_pooling_2
+Layer Type: MaxPooling2D
+Device: DPU
+Notes: 
+    None
+Layer Config:
+{'data_format': 'channels_last',
+ 'dtype': 'float32',
+ 'name': 'vxm_dense_unet_enc_pooling_2',
+ 'padding': 'valid',
+ 'pool_size': (2, 2),
+ 'strides': (2, 2),
+ 'trainable': True}
+________________________________________________________________________________________________________________________
+Layer ID: 12
+Layer Name: vxm_dense_unet_enc_conv_3_0
+Layer Type: Conv2D
+Device: CPU
+Notes: 
+    None
+Layer Config:
+{'activation': 'linear',
+ 'activity_regularizer': None,
+ 'bias_constraint': None,
+ 'bias_initializer': {'class_name': 'Zeros', 'config': {}},
+ 'bias_regularizer': None,
+ 'data_format': 'channels_last',
+ 'dilation_rate': (1, 1),
+ 'dtype': 'float32',
+ 'filters': 32,
+ 'groups': 1,
+ 'kernel_constraint': None,
+ 'kernel_initializer': {'class_name': 'HeNormal', 'config': {'seed': None}},
+ 'kernel_regularizer': None,
+ 'kernel_size': (3, 3),
+ 'name': 'vxm_dense_unet_enc_conv_3_0',
+ 'padding': 'same',
+ 'strides': (1, 1),
+ 'trainable': True,
+ 'use_bias': True}
+________________________________________________________________________________________________________________________
+Layer ID: 13
+Layer Name: vxm_dense_unet_enc_conv_3_0_activation
+Layer Type: LeakyReLU
+Device: CPU
+Notes: 
+    1. Converted alpha 0.1 to 26./256. to match DPU implementation.
+    2. xir::Op{name = quant_vxm_dense_unet_enc_conv_3_0, type = conv2d-fix} has been assigned to CPU: [DPU does not support activation type: LEAKYRELU. Its alpha is 0.200000, but DPU only support 0.1015625.].
+Layer Config:
+{'alpha': 0.20000000298023224,
+ 'dtype': 'float32',
+ 'name': 'vxm_dense_unet_enc_conv_3_0_activation',
+ 'trainable': True}
+________________________________________________________________________________________________________________________
+Layer ID: 14
+Layer Name: vxm_dense_unet_enc_pooling_3
+Layer Type: MaxPooling2D
+Device: DPU
+Notes: 
+    None
+Layer Config:
+{'data_format': 'channels_last',
+ 'dtype': 'float32',
+ 'name': 'vxm_dense_unet_enc_pooling_3',
+ 'padding': 'valid',
+ 'pool_size': (2, 2),
+ 'strides': (2, 2),
+ 'trainable': True}
+________________________________________________________________________________________________________________________
+Layer ID: 15
+Layer Name: vxm_dense_unet_dec_conv_3_0
+Layer Type: Conv2D
+Device: CPU
+Notes: 
+    None
+Layer Config:
+{'activation': 'linear',
+ 'activity_regularizer': None,
+ 'bias_constraint': None,
+ 'bias_initializer': {'class_name': 'Zeros', 'config': {}},
+ 'bias_regularizer': None,
+ 'data_format': 'channels_last',
+ 'dilation_rate': (1, 1),
+ 'dtype': 'float32',
+ 'filters': 32,
+ 'groups': 1,
+ 'kernel_constraint': None,
+ 'kernel_initializer': {'class_name': 'HeNormal', 'config': {'seed': None}},
+ 'kernel_regularizer': None,
+ 'kernel_size': (3, 3),
+ 'name': 'vxm_dense_unet_dec_conv_3_0',
+ 'padding': 'same',
+ 'strides': (1, 1),
+ 'trainable': True,
+ 'use_bias': True}
+________________________________________________________________________________________________________________________
+Layer ID: 16
+Layer Name: vxm_dense_unet_dec_conv_3_0_activation
+Layer Type: LeakyReLU
+Device: CPU
+Notes: 
+    1. Converted alpha 0.1 to 26./256. to match DPU implementation.
+    2. xir::Op{name = quant_vxm_dense_unet_dec_conv_3_0, type = conv2d-fix} has been assigned to CPU: [DPU does not support activation type: LEAKYRELU. Its alpha is 0.200000, but DPU only support 0.1015625.].
+Layer Config:
+{'alpha': 0.20000000298023224,
+ 'dtype': 'float32',
+ 'name': 'vxm_dense_unet_dec_conv_3_0_activation',
+ 'trainable': True}
+________________________________________________________________________________________________________________________
+Layer ID: 17
+Layer Name: vxm_dense_unet_dec_upsample_3
+Layer Type: UpSampling2D
+Device: DPU
+Notes: 
+    None
+Layer Config:
+{'data_format': 'channels_last',
+ 'dtype': 'float32',
+ 'interpolation': 'nearest',
+ 'name': 'vxm_dense_unet_dec_upsample_3',
+ 'size': (2, 2),
+ 'trainable': True}
+________________________________________________________________________________________________________________________
+Layer ID: 18
+Layer Name: vxm_dense_unet_dec_upsample_3_concat
+Layer Type: Concatenate
+Device: DPU
+Notes: 
+    None
+Layer Config:
+{'axis': -1,
+ 'dtype': 'float32',
+ 'name': 'vxm_dense_unet_dec_upsample_3_concat',
+ 'trainable': True}
+________________________________________________________________________________________________________________________
+Layer ID: 19
+Layer Name: vxm_dense_unet_dec_conv_2_0
+Layer Type: Conv2D
+Device: CPU
+Notes: 
+    None
+Layer Config:
+{'activation': 'linear',
+ 'activity_regularizer': None,
+ 'bias_constraint': None,
+ 'bias_initializer': {'class_name': 'Zeros', 'config': {}},
+ 'bias_regularizer': None,
+ 'data_format': 'channels_last',
+ 'dilation_rate': (1, 1),
+ 'dtype': 'float32',
+ 'filters': 32,
+ 'groups': 1,
+ 'kernel_constraint': None,
+ 'kernel_initializer': {'class_name': 'HeNormal', 'config': {'seed': None}},
+ 'kernel_regularizer': None,
+ 'kernel_size': (3, 3),
+ 'name': 'vxm_dense_unet_dec_conv_2_0',
+ 'padding': 'same',
+ 'strides': (1, 1),
+ 'trainable': True,
+ 'use_bias': True}
+________________________________________________________________________________________________________________________
+Layer ID: 20
+Layer Name: vxm_dense_unet_dec_conv_2_0_activation
+Layer Type: LeakyReLU
+Device: CPU
+Notes: 
+    1. Converted alpha 0.1 to 26./256. to match DPU implementation.
+    2. xir::Op{name = quant_vxm_dense_unet_dec_conv_2_0, type = conv2d-fix} has been assigned to CPU: [DPU does not support activation type: LEAKYRELU. Its alpha is 0.200000, but DPU only support 0.1015625.].
+Layer Config:
+{'alpha': 0.20000000298023224,
+ 'dtype': 'float32',
+ 'name': 'vxm_dense_unet_dec_conv_2_0_activation',
+ 'trainable': True}
+________________________________________________________________________________________________________________________
+Layer ID: 21
+Layer Name: vxm_dense_unet_dec_upsample_2
+Layer Type: UpSampling2D
+Device: DPU
+Notes: 
+    None
+Layer Config:
+{'data_format': 'channels_last',
+ 'dtype': 'float32',
+ 'interpolation': 'nearest',
+ 'name': 'vxm_dense_unet_dec_upsample_2',
+ 'size': (2, 2),
+ 'trainable': True}
+________________________________________________________________________________________________________________________
+Layer ID: 22
+Layer Name: vxm_dense_unet_dec_upsample_2_concat
+Layer Type: Concatenate
+Device: DPU
+Notes: 
+    None
+Layer Config:
+{'axis': -1,
+ 'dtype': 'float32',
+ 'name': 'vxm_dense_unet_dec_upsample_2_concat',
+ 'trainable': True}
+________________________________________________________________________________________________________________________
+Layer ID: 23
+Layer Name: vxm_dense_unet_dec_conv_1_0
+Layer Type: Conv2D
+Device: CPU
+Notes: 
+    None
+Layer Config:
+{'activation': 'linear',
+ 'activity_regularizer': None,
+ 'bias_constraint': None,
+ 'bias_initializer': {'class_name': 'Zeros', 'config': {}},
+ 'bias_regularizer': None,
+ 'data_format': 'channels_last',
+ 'dilation_rate': (1, 1),
+ 'dtype': 'float32',
+ 'filters': 32,
+ 'groups': 1,
+ 'kernel_constraint': None,
+ 'kernel_initializer': {'class_name': 'HeNormal', 'config': {'seed': None}},
+ 'kernel_regularizer': None,
+ 'kernel_size': (3, 3),
+ 'name': 'vxm_dense_unet_dec_conv_1_0',
+ 'padding': 'same',
+ 'strides': (1, 1),
+ 'trainable': True,
+ 'use_bias': True}
+________________________________________________________________________________________________________________________
+Layer ID: 24
+Layer Name: vxm_dense_unet_dec_conv_1_0_activation
+Layer Type: LeakyReLU
+Device: CPU
+Notes: 
+    1. Converted alpha 0.1 to 26./256. to match DPU implementation.
+    2. xir::Op{name = quant_vxm_dense_unet_dec_conv_1_0, type = conv2d-fix} has been assigned to CPU: [DPU does not support activation type: LEAKYRELU. Its alpha is 0.200000, but DPU only support 0.1015625.].
+Layer Config:
+{'alpha': 0.20000000298023224,
+ 'dtype': 'float32',
+ 'name': 'vxm_dense_unet_dec_conv_1_0_activation',
+ 'trainable': True}
+________________________________________________________________________________________________________________________
+Layer ID: 25
+Layer Name: vxm_dense_unet_dec_upsample_1
+Layer Type: UpSampling2D
+Device: DPU
+Notes: 
+    None
+Layer Config:
+{'data_format': 'channels_last',
+ 'dtype': 'float32',
+ 'interpolation': 'nearest',
+ 'name': 'vxm_dense_unet_dec_upsample_1',
+ 'size': (2, 2),
+ 'trainable': True}
+________________________________________________________________________________________________________________________
+Layer ID: 26
+Layer Name: vxm_dense_unet_dec_upsample_1_concat
+Layer Type: Concatenate
+Device: DPU
+Notes: 
+    None
+Layer Config:
+{'axis': -1,
+ 'dtype': 'float32',
+ 'name': 'vxm_dense_unet_dec_upsample_1_concat',
+ 'trainable': True}
+________________________________________________________________________________________________________________________
+Layer ID: 27
+Layer Name: vxm_dense_unet_dec_conv_0_0
+Layer Type: Conv2D
+Device: CPU
+Notes: 
+    None
+Layer Config:
+{'activation': 'linear',
+ 'activity_regularizer': None,
+ 'bias_constraint': None,
+ 'bias_initializer': {'class_name': 'Zeros', 'config': {}},
+ 'bias_regularizer': None,
+ 'data_format': 'channels_last',
+ 'dilation_rate': (1, 1),
+ 'dtype': 'float32',
+ 'filters': 32,
+ 'groups': 1,
+ 'kernel_constraint': None,
+ 'kernel_initializer': {'class_name': 'HeNormal', 'config': {'seed': None}},
+ 'kernel_regularizer': None,
+ 'kernel_size': (3, 3),
+ 'name': 'vxm_dense_unet_dec_conv_0_0',
+ 'padding': 'same',
+ 'strides': (1, 1),
+ 'trainable': True,
+ 'use_bias': True}
+________________________________________________________________________________________________________________________
+Layer ID: 28
+Layer Name: vxm_dense_unet_dec_conv_0_0_activation
+Layer Type: LeakyReLU
+Device: CPU
+Notes: 
+    1. Converted alpha 0.1 to 26./256. to match DPU implementation.
+    2. xir::Op{name = quant_vxm_dense_unet_dec_conv_0_0, type = conv2d-fix} has been assigned to CPU: [DPU does not support activation type: LEAKYRELU. Its alpha is 0.200000, but DPU only support 0.1015625.].
+Layer Config:
+{'alpha': 0.20000000298023224,
+ 'dtype': 'float32',
+ 'name': 'vxm_dense_unet_dec_conv_0_0_activation',
+ 'trainable': True}
+________________________________________________________________________________________________________________________
+Layer ID: 29
+Layer Name: vxm_dense_unet_dec_upsample_0
+Layer Type: UpSampling2D
+Device: DPU
+Notes: 
+    None
+Layer Config:
+{'data_format': 'channels_last',
+ 'dtype': 'float32',
+ 'interpolation': 'nearest',
+ 'name': 'vxm_dense_unet_dec_upsample_0',
+ 'size': (2, 2),
+ 'trainable': True}
+________________________________________________________________________________________________________________________
+Layer ID: 30
+Layer Name: vxm_dense_unet_dec_upsample_0_concat
+Layer Type: Concatenate
+Device: DPU
+Notes: 
+    None
+Layer Config:
+{'axis': -1,
+ 'dtype': 'float32',
+ 'name': 'vxm_dense_unet_dec_upsample_0_concat',
+ 'trainable': True}
+________________________________________________________________________________________________________________________
+Layer ID: 31
+Layer Name: vxm_dense_unet_dec_final_conv_0
+Layer Type: Conv2D
+Device: CPU
+Notes: 
+    None
+Layer Config:
+{'activation': 'linear',
+ 'activity_regularizer': None,
+ 'bias_constraint': None,
+ 'bias_initializer': {'class_name': 'Zeros', 'config': {}},
+ 'bias_regularizer': None,
+ 'data_format': 'channels_last',
+ 'dilation_rate': (1, 1),
+ 'dtype': 'float32',
+ 'filters': 32,
+ 'groups': 1,
+ 'kernel_constraint': None,
+ 'kernel_initializer': {'class_name': 'HeNormal', 'config': {'seed': None}},
+ 'kernel_regularizer': None,
+ 'kernel_size': (3, 3),
+ 'name': 'vxm_dense_unet_dec_final_conv_0',
+ 'padding': 'same',
+ 'strides': (1, 1),
+ 'trainable': True,
+ 'use_bias': True}
+________________________________________________________________________________________________________________________
+Layer ID: 32
+Layer Name: vxm_dense_unet_dec_final_conv_0_activation
+Layer Type: LeakyReLU
+Device: CPU
+Notes: 
+    1. Converted alpha 0.1 to 26./256. to match DPU implementation.
+    2. xir::Op{name = quant_vxm_dense_unet_dec_final_conv_0, type = conv2d-fix} has been assigned to CPU: [DPU does not support activation type: LEAKYRELU. Its alpha is 0.200000, but DPU only support 0.1015625.].
+Layer Config:
+{'alpha': 0.20000000298023224,
+ 'dtype': 'float32',
+ 'name': 'vxm_dense_unet_dec_final_conv_0_activation',
+ 'trainable': True}
+________________________________________________________________________________________________________________________
+Layer ID: 33
+Layer Name: vxm_dense_unet_dec_final_conv_1
+Layer Type: Conv2D
+Device: CPU
+Notes: 
+    None
+Layer Config:
+{'activation': 'linear',
+ 'activity_regularizer': None,
+ 'bias_constraint': None,
+ 'bias_initializer': {'class_name': 'Zeros', 'config': {}},
+ 'bias_regularizer': None,
+ 'data_format': 'channels_last',
+ 'dilation_rate': (1, 1),
+ 'dtype': 'float32',
+ 'filters': 16,
+ 'groups': 1,
+ 'kernel_constraint': None,
+ 'kernel_initializer': {'class_name': 'HeNormal', 'config': {'seed': None}},
+ 'kernel_regularizer': None,
+ 'kernel_size': (3, 3),
+ 'name': 'vxm_dense_unet_dec_final_conv_1',
+ 'padding': 'same',
+ 'strides': (1, 1),
+ 'trainable': True,
+ 'use_bias': True}
+________________________________________________________________________________________________________________________
+Layer ID: 34
+Layer Name: vxm_dense_unet_dec_final_conv_1_activation
+Layer Type: LeakyReLU
+Device: CPU
+Notes: 
+    1. Converted alpha 0.1 to 26./256. to match DPU implementation.
+    2. xir::Op{name = quant_vxm_dense_unet_dec_final_conv_1, type = conv2d-fix} has been assigned to CPU: [DPU does not support activation type: LEAKYRELU. Its alpha is 0.200000, but DPU only support 0.1015625.].
+Layer Config:
+{'alpha': 0.20000000298023224,
+ 'dtype': 'float32',
+ 'name': 'vxm_dense_unet_dec_final_conv_1_activation',
+ 'trainable': True}
+________________________________________________________________________________________________________________________
+Layer ID: 35
+Layer Name: vxm_dense_flow
+Layer Type: Conv2D
+Device: DPU
+Notes: 
+    None
+Layer Config:
+{'activation': 'linear',
+ 'activity_regularizer': None,
+ 'bias_constraint': None,
+ 'bias_initializer': {'class_name': 'Zeros', 'config': {}},
+ 'bias_regularizer': None,
+ 'data_format': 'channels_last',
+ 'dilation_rate': (1, 1),
+ 'dtype': 'float32',
+ 'filters': 2,
+ 'groups': 1,
+ 'kernel_constraint': None,
+ 'kernel_initializer': {'class_name': 'RandomNormal',
+                        'config': {'mean': 0.0, 'seed': None, 'stddev': 1e-05}},
+ 'kernel_regularizer': None,
+ 'kernel_size': (3, 3),
+ 'name': 'vxm_dense_flow',
+ 'padding': 'same',
+ 'strides': (1, 1),
+ 'trainable': True,
+ 'use_bias': True}
+________________________________________________________________________________________________________________________
+Layer ID: 36
+Layer Name: vxm_dense_transformer
+Layer Type: SpatialTransformer
+Device: CPU
+Notes: 
+    None
+Layer Config:
+{'dtype': 'float32',
+ 'fill_value': None,
+ 'indexing': 'ij',
+ 'interp_method': 'linear',
+ 'name': 'vxm_dense_transformer',
+ 'shift_center': True,
+ 'single_transform': False,
+ 'trainable': True}
+________________________________________________________________________________________________________________________
