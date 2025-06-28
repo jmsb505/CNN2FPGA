@@ -1,0 +1,763 @@
+[MODEL INFO]:
+________________________________________________________________________________________________________________________
+Model Name: vxm_dense_unet
+________________________________________________________________________________________________________________________
+ID          Name                    Type                    Device      Notes                                           
+========================================================================================================================
+0/38        input_wrapper_for_input_InputLayer              INPUT                                                       
+            19                                                                                                          
+------------------------------------------------------------------------------------------------------------------------
+1/38        input_wrapper_for_input_InputLayer              INPUT                                                       
+            20                                                                                                          
+------------------------------------------------------------------------------------------------------------------------
+2/38        concatenate_45          Concatenate             DPU                                                         
+------------------------------------------------------------------------------------------------------------------------
+3/38        conv2d_99               Conv2D<linear>          DPU                                                         
+------------------------------------------------------------------------------------------------------------------------
+4/38        leaky_re_lu_86          LeakyReLU               DPU                                                         
+------------------------------------------------------------------------------------------------------------------------
+5/38        max_pooling2d_36        MaxPooling2D            DPU                                                         
+------------------------------------------------------------------------------------------------------------------------
+6/38        conv2d_100              Conv2D<linear>          DPU                                                         
+------------------------------------------------------------------------------------------------------------------------
+7/38        leaky_re_lu_87          LeakyReLU               DPU                                                         
+------------------------------------------------------------------------------------------------------------------------
+8/38        max_pooling2d_37        MaxPooling2D            DPU                                                         
+------------------------------------------------------------------------------------------------------------------------
+9/38        conv2d_101              Conv2D<linear>          DPU                                                         
+------------------------------------------------------------------------------------------------------------------------
+10/38       leaky_re_lu_88          LeakyReLU               DPU                                                         
+------------------------------------------------------------------------------------------------------------------------
+11/38       max_pooling2d_38        MaxPooling2D            DPU                                                         
+------------------------------------------------------------------------------------------------------------------------
+12/38       conv2d_102              Conv2D<linear>          DPU                                                         
+------------------------------------------------------------------------------------------------------------------------
+13/38       leaky_re_lu_89          LeakyReLU               DPU                                                         
+------------------------------------------------------------------------------------------------------------------------
+14/38       max_pooling2d_39        MaxPooling2D            DPU                                                         
+------------------------------------------------------------------------------------------------------------------------
+15/38       conv2d_103              Conv2D<linear>          DPU                                                         
+------------------------------------------------------------------------------------------------------------------------
+16/38       leaky_re_lu_90          LeakyReLU               DPU                                                         
+------------------------------------------------------------------------------------------------------------------------
+17/38       up_sampling2d_36        UpSampling2D            DPU                                                         
+------------------------------------------------------------------------------------------------------------------------
+18/38       concatenate_46          Concatenate             DPU                                                         
+------------------------------------------------------------------------------------------------------------------------
+19/38       conv2d_104              Conv2D<linear>          DPU                                                         
+------------------------------------------------------------------------------------------------------------------------
+20/38       leaky_re_lu_91          LeakyReLU               DPU                                                         
+------------------------------------------------------------------------------------------------------------------------
+21/38       up_sampling2d_37        UpSampling2D            DPU                                                         
+------------------------------------------------------------------------------------------------------------------------
+22/38       concatenate_47          Concatenate             DPU                                                         
+------------------------------------------------------------------------------------------------------------------------
+23/38       conv2d_105              Conv2D<linear>          DPU                                                         
+------------------------------------------------------------------------------------------------------------------------
+24/38       leaky_re_lu_92          LeakyReLU               DPU                                                         
+------------------------------------------------------------------------------------------------------------------------
+25/38       up_sampling2d_38        UpSampling2D            DPU                                                         
+------------------------------------------------------------------------------------------------------------------------
+26/38       concatenate_48          Concatenate             DPU                                                         
+------------------------------------------------------------------------------------------------------------------------
+27/38       conv2d_106              Conv2D<linear>          DPU                                                         
+------------------------------------------------------------------------------------------------------------------------
+28/38       leaky_re_lu_93          LeakyReLU               DPU                                                         
+------------------------------------------------------------------------------------------------------------------------
+29/38       up_sampling2d_39        UpSampling2D            DPU                                                         
+------------------------------------------------------------------------------------------------------------------------
+30/38       concatenate_49          Concatenate             DPU                                                         
+------------------------------------------------------------------------------------------------------------------------
+31/38       conv2d_107              Conv2D<linear>          DPU                                                         
+------------------------------------------------------------------------------------------------------------------------
+32/38       leaky_re_lu_94          LeakyReLU               DPU                                                         
+------------------------------------------------------------------------------------------------------------------------
+33/38       conv2d_108              Conv2D<linear>          DPU                                                         
+------------------------------------------------------------------------------------------------------------------------
+34/38       leaky_re_lu_95          LeakyReLU               DPU                                                         
+------------------------------------------------------------------------------------------------------------------------
+35/38       conv2d_109              Conv2D<linear>          DPU                                                         
+------------------------------------------------------------------------------------------------------------------------
+36/38       leaky_re_lu_96          LeakyReLU               DPU                                                         
+------------------------------------------------------------------------------------------------------------------------
+37/38       flow                    Lambda                  CPU                                                         
+------------------------------------------------------------------------------------------------------------------------
+38/38       spatial_transformer_2   SpatialTransformer      CPU                                                         
+------------------------------------------------------------------------------------------------------------------------
+========================================================================================================================
+[SUMMARY INFO]:
+- [Target Name]: DPUCZDX8G_ISA1_B4096
+- [Total Layers]: 39
+- [Layer Types]: InputLayer(2) Concatenate(5) Conv2D<linear>(11) LeakyReLU(11) MaxPooling2D(4) UpSampling2D(4) Lambda(1) SpatialTransformer(1) 
+- [Partition Results]: INPUT(2) DPU(35) CPU(2) 
+========================================================================================================================
+[NOTES INFO]:
+========================================================================================================================
+
+Detailed Model Info: 
+
+Layer ID: 0
+Layer Name: input_wrapper_for_input_19
+Layer Type: InputLayer
+Device: INPUT
+Notes: 
+    None
+Layer Config:
+{'batch_input_shape': (1, 224, 192, 1),
+ 'dtype': 'float64',
+ 'name': 'input_wrapper_for_input_19',
+ 'ragged': False,
+ 'sparse': False}
+________________________________________________________________________________________________________________________
+Layer ID: 1
+Layer Name: input_wrapper_for_input_20
+Layer Type: InputLayer
+Device: INPUT
+Notes: 
+    None
+Layer Config:
+{'batch_input_shape': (1, 224, 192, 1),
+ 'dtype': 'float64',
+ 'name': 'input_wrapper_for_input_20',
+ 'ragged': False,
+ 'sparse': False}
+________________________________________________________________________________________________________________________
+Layer ID: 2
+Layer Name: concatenate_45
+Layer Type: Concatenate
+Device: DPU
+Notes: 
+    None
+Layer Config:
+{'axis': -1, 'dtype': 'float32', 'name': 'concatenate_45', 'trainable': True}
+________________________________________________________________________________________________________________________
+Layer ID: 3
+Layer Name: conv2d_99
+Layer Type: Conv2D
+Device: DPU
+Notes: 
+    None
+Layer Config:
+{'activation': 'linear',
+ 'activity_regularizer': None,
+ 'bias_constraint': None,
+ 'bias_initializer': {'class_name': 'Zeros', 'config': {}},
+ 'bias_regularizer': None,
+ 'data_format': 'channels_last',
+ 'dilation_rate': (1, 1),
+ 'dtype': 'float32',
+ 'filters': 32,
+ 'groups': 1,
+ 'kernel_constraint': None,
+ 'kernel_initializer': {'class_name': 'GlorotUniform',
+                        'config': {'seed': None}},
+ 'kernel_regularizer': None,
+ 'kernel_size': (3, 3),
+ 'name': 'conv2d_99',
+ 'padding': 'same',
+ 'strides': (1, 1),
+ 'trainable': True,
+ 'use_bias': True}
+________________________________________________________________________________________________________________________
+Layer ID: 4
+Layer Name: leaky_re_lu_86
+Layer Type: LeakyReLU
+Device: DPU
+Notes: 
+    1. Converted alpha 0.1 to 26./256. to match DPU implementation.
+Layer Config:
+{'alpha': 0.1015625,
+ 'dtype': 'float32',
+ 'name': 'leaky_re_lu_86',
+ 'trainable': True}
+________________________________________________________________________________________________________________________
+Layer ID: 5
+Layer Name: max_pooling2d_36
+Layer Type: MaxPooling2D
+Device: DPU
+Notes: 
+    None
+Layer Config:
+{'data_format': 'channels_last',
+ 'dtype': 'float32',
+ 'name': 'max_pooling2d_36',
+ 'padding': 'valid',
+ 'pool_size': (2, 2),
+ 'strides': (2, 2),
+ 'trainable': True}
+________________________________________________________________________________________________________________________
+Layer ID: 6
+Layer Name: conv2d_100
+Layer Type: Conv2D
+Device: DPU
+Notes: 
+    None
+Layer Config:
+{'activation': 'linear',
+ 'activity_regularizer': None,
+ 'bias_constraint': None,
+ 'bias_initializer': {'class_name': 'Zeros', 'config': {}},
+ 'bias_regularizer': None,
+ 'data_format': 'channels_last',
+ 'dilation_rate': (1, 1),
+ 'dtype': 'float32',
+ 'filters': 32,
+ 'groups': 1,
+ 'kernel_constraint': None,
+ 'kernel_initializer': {'class_name': 'GlorotUniform',
+                        'config': {'seed': None}},
+ 'kernel_regularizer': None,
+ 'kernel_size': (3, 3),
+ 'name': 'conv2d_100',
+ 'padding': 'same',
+ 'strides': (1, 1),
+ 'trainable': True,
+ 'use_bias': True}
+________________________________________________________________________________________________________________________
+Layer ID: 7
+Layer Name: leaky_re_lu_87
+Layer Type: LeakyReLU
+Device: DPU
+Notes: 
+    1. Converted alpha 0.1 to 26./256. to match DPU implementation.
+Layer Config:
+{'alpha': 0.1015625,
+ 'dtype': 'float32',
+ 'name': 'leaky_re_lu_87',
+ 'trainable': True}
+________________________________________________________________________________________________________________________
+Layer ID: 8
+Layer Name: max_pooling2d_37
+Layer Type: MaxPooling2D
+Device: DPU
+Notes: 
+    None
+Layer Config:
+{'data_format': 'channels_last',
+ 'dtype': 'float32',
+ 'name': 'max_pooling2d_37',
+ 'padding': 'valid',
+ 'pool_size': (2, 2),
+ 'strides': (2, 2),
+ 'trainable': True}
+________________________________________________________________________________________________________________________
+Layer ID: 9
+Layer Name: conv2d_101
+Layer Type: Conv2D
+Device: DPU
+Notes: 
+    None
+Layer Config:
+{'activation': 'linear',
+ 'activity_regularizer': None,
+ 'bias_constraint': None,
+ 'bias_initializer': {'class_name': 'Zeros', 'config': {}},
+ 'bias_regularizer': None,
+ 'data_format': 'channels_last',
+ 'dilation_rate': (1, 1),
+ 'dtype': 'float32',
+ 'filters': 32,
+ 'groups': 1,
+ 'kernel_constraint': None,
+ 'kernel_initializer': {'class_name': 'GlorotUniform',
+                        'config': {'seed': None}},
+ 'kernel_regularizer': None,
+ 'kernel_size': (3, 3),
+ 'name': 'conv2d_101',
+ 'padding': 'same',
+ 'strides': (1, 1),
+ 'trainable': True,
+ 'use_bias': True}
+________________________________________________________________________________________________________________________
+Layer ID: 10
+Layer Name: leaky_re_lu_88
+Layer Type: LeakyReLU
+Device: DPU
+Notes: 
+    1. Converted alpha 0.1 to 26./256. to match DPU implementation.
+Layer Config:
+{'alpha': 0.1015625,
+ 'dtype': 'float32',
+ 'name': 'leaky_re_lu_88',
+ 'trainable': True}
+________________________________________________________________________________________________________________________
+Layer ID: 11
+Layer Name: max_pooling2d_38
+Layer Type: MaxPooling2D
+Device: DPU
+Notes: 
+    None
+Layer Config:
+{'data_format': 'channels_last',
+ 'dtype': 'float32',
+ 'name': 'max_pooling2d_38',
+ 'padding': 'valid',
+ 'pool_size': (2, 2),
+ 'strides': (2, 2),
+ 'trainable': True}
+________________________________________________________________________________________________________________________
+Layer ID: 12
+Layer Name: conv2d_102
+Layer Type: Conv2D
+Device: DPU
+Notes: 
+    None
+Layer Config:
+{'activation': 'linear',
+ 'activity_regularizer': None,
+ 'bias_constraint': None,
+ 'bias_initializer': {'class_name': 'Zeros', 'config': {}},
+ 'bias_regularizer': None,
+ 'data_format': 'channels_last',
+ 'dilation_rate': (1, 1),
+ 'dtype': 'float32',
+ 'filters': 32,
+ 'groups': 1,
+ 'kernel_constraint': None,
+ 'kernel_initializer': {'class_name': 'GlorotUniform',
+                        'config': {'seed': None}},
+ 'kernel_regularizer': None,
+ 'kernel_size': (3, 3),
+ 'name': 'conv2d_102',
+ 'padding': 'same',
+ 'strides': (1, 1),
+ 'trainable': True,
+ 'use_bias': True}
+________________________________________________________________________________________________________________________
+Layer ID: 13
+Layer Name: leaky_re_lu_89
+Layer Type: LeakyReLU
+Device: DPU
+Notes: 
+    1. Converted alpha 0.1 to 26./256. to match DPU implementation.
+Layer Config:
+{'alpha': 0.1015625,
+ 'dtype': 'float32',
+ 'name': 'leaky_re_lu_89',
+ 'trainable': True}
+________________________________________________________________________________________________________________________
+Layer ID: 14
+Layer Name: max_pooling2d_39
+Layer Type: MaxPooling2D
+Device: DPU
+Notes: 
+    None
+Layer Config:
+{'data_format': 'channels_last',
+ 'dtype': 'float32',
+ 'name': 'max_pooling2d_39',
+ 'padding': 'valid',
+ 'pool_size': (2, 2),
+ 'strides': (2, 2),
+ 'trainable': True}
+________________________________________________________________________________________________________________________
+Layer ID: 15
+Layer Name: conv2d_103
+Layer Type: Conv2D
+Device: DPU
+Notes: 
+    None
+Layer Config:
+{'activation': 'linear',
+ 'activity_regularizer': None,
+ 'bias_constraint': None,
+ 'bias_initializer': {'class_name': 'Zeros', 'config': {}},
+ 'bias_regularizer': None,
+ 'data_format': 'channels_last',
+ 'dilation_rate': (1, 1),
+ 'dtype': 'float32',
+ 'filters': 32,
+ 'groups': 1,
+ 'kernel_constraint': None,
+ 'kernel_initializer': {'class_name': 'GlorotUniform',
+                        'config': {'seed': None}},
+ 'kernel_regularizer': None,
+ 'kernel_size': (3, 3),
+ 'name': 'conv2d_103',
+ 'padding': 'same',
+ 'strides': (1, 1),
+ 'trainable': True,
+ 'use_bias': True}
+________________________________________________________________________________________________________________________
+Layer ID: 16
+Layer Name: leaky_re_lu_90
+Layer Type: LeakyReLU
+Device: DPU
+Notes: 
+    1. Converted alpha 0.1 to 26./256. to match DPU implementation.
+Layer Config:
+{'alpha': 0.1015625,
+ 'dtype': 'float32',
+ 'name': 'leaky_re_lu_90',
+ 'trainable': True}
+________________________________________________________________________________________________________________________
+Layer ID: 17
+Layer Name: up_sampling2d_36
+Layer Type: UpSampling2D
+Device: DPU
+Notes: 
+    None
+Layer Config:
+{'data_format': 'channels_last',
+ 'dtype': 'float32',
+ 'interpolation': 'nearest',
+ 'name': 'up_sampling2d_36',
+ 'size': (2, 2),
+ 'trainable': True}
+________________________________________________________________________________________________________________________
+Layer ID: 18
+Layer Name: concatenate_46
+Layer Type: Concatenate
+Device: DPU
+Notes: 
+    None
+Layer Config:
+{'axis': -1, 'dtype': 'float32', 'name': 'concatenate_46', 'trainable': True}
+________________________________________________________________________________________________________________________
+Layer ID: 19
+Layer Name: conv2d_104
+Layer Type: Conv2D
+Device: DPU
+Notes: 
+    None
+Layer Config:
+{'activation': 'linear',
+ 'activity_regularizer': None,
+ 'bias_constraint': None,
+ 'bias_initializer': {'class_name': 'Zeros', 'config': {}},
+ 'bias_regularizer': None,
+ 'data_format': 'channels_last',
+ 'dilation_rate': (1, 1),
+ 'dtype': 'float32',
+ 'filters': 32,
+ 'groups': 1,
+ 'kernel_constraint': None,
+ 'kernel_initializer': {'class_name': 'GlorotUniform',
+                        'config': {'seed': None}},
+ 'kernel_regularizer': None,
+ 'kernel_size': (3, 3),
+ 'name': 'conv2d_104',
+ 'padding': 'same',
+ 'strides': (1, 1),
+ 'trainable': True,
+ 'use_bias': True}
+________________________________________________________________________________________________________________________
+Layer ID: 20
+Layer Name: leaky_re_lu_91
+Layer Type: LeakyReLU
+Device: DPU
+Notes: 
+    1. Converted alpha 0.1 to 26./256. to match DPU implementation.
+Layer Config:
+{'alpha': 0.1015625,
+ 'dtype': 'float32',
+ 'name': 'leaky_re_lu_91',
+ 'trainable': True}
+________________________________________________________________________________________________________________________
+Layer ID: 21
+Layer Name: up_sampling2d_37
+Layer Type: UpSampling2D
+Device: DPU
+Notes: 
+    None
+Layer Config:
+{'data_format': 'channels_last',
+ 'dtype': 'float32',
+ 'interpolation': 'nearest',
+ 'name': 'up_sampling2d_37',
+ 'size': (2, 2),
+ 'trainable': True}
+________________________________________________________________________________________________________________________
+Layer ID: 22
+Layer Name: concatenate_47
+Layer Type: Concatenate
+Device: DPU
+Notes: 
+    None
+Layer Config:
+{'axis': -1, 'dtype': 'float32', 'name': 'concatenate_47', 'trainable': True}
+________________________________________________________________________________________________________________________
+Layer ID: 23
+Layer Name: conv2d_105
+Layer Type: Conv2D
+Device: DPU
+Notes: 
+    None
+Layer Config:
+{'activation': 'linear',
+ 'activity_regularizer': None,
+ 'bias_constraint': None,
+ 'bias_initializer': {'class_name': 'Zeros', 'config': {}},
+ 'bias_regularizer': None,
+ 'data_format': 'channels_last',
+ 'dilation_rate': (1, 1),
+ 'dtype': 'float32',
+ 'filters': 32,
+ 'groups': 1,
+ 'kernel_constraint': None,
+ 'kernel_initializer': {'class_name': 'GlorotUniform',
+                        'config': {'seed': None}},
+ 'kernel_regularizer': None,
+ 'kernel_size': (3, 3),
+ 'name': 'conv2d_105',
+ 'padding': 'same',
+ 'strides': (1, 1),
+ 'trainable': True,
+ 'use_bias': True}
+________________________________________________________________________________________________________________________
+Layer ID: 24
+Layer Name: leaky_re_lu_92
+Layer Type: LeakyReLU
+Device: DPU
+Notes: 
+    1. Converted alpha 0.1 to 26./256. to match DPU implementation.
+Layer Config:
+{'alpha': 0.1015625,
+ 'dtype': 'float32',
+ 'name': 'leaky_re_lu_92',
+ 'trainable': True}
+________________________________________________________________________________________________________________________
+Layer ID: 25
+Layer Name: up_sampling2d_38
+Layer Type: UpSampling2D
+Device: DPU
+Notes: 
+    None
+Layer Config:
+{'data_format': 'channels_last',
+ 'dtype': 'float32',
+ 'interpolation': 'nearest',
+ 'name': 'up_sampling2d_38',
+ 'size': (2, 2),
+ 'trainable': True}
+________________________________________________________________________________________________________________________
+Layer ID: 26
+Layer Name: concatenate_48
+Layer Type: Concatenate
+Device: DPU
+Notes: 
+    None
+Layer Config:
+{'axis': -1, 'dtype': 'float32', 'name': 'concatenate_48', 'trainable': True}
+________________________________________________________________________________________________________________________
+Layer ID: 27
+Layer Name: conv2d_106
+Layer Type: Conv2D
+Device: DPU
+Notes: 
+    None
+Layer Config:
+{'activation': 'linear',
+ 'activity_regularizer': None,
+ 'bias_constraint': None,
+ 'bias_initializer': {'class_name': 'Zeros', 'config': {}},
+ 'bias_regularizer': None,
+ 'data_format': 'channels_last',
+ 'dilation_rate': (1, 1),
+ 'dtype': 'float32',
+ 'filters': 32,
+ 'groups': 1,
+ 'kernel_constraint': None,
+ 'kernel_initializer': {'class_name': 'GlorotUniform',
+                        'config': {'seed': None}},
+ 'kernel_regularizer': None,
+ 'kernel_size': (3, 3),
+ 'name': 'conv2d_106',
+ 'padding': 'same',
+ 'strides': (1, 1),
+ 'trainable': True,
+ 'use_bias': True}
+________________________________________________________________________________________________________________________
+Layer ID: 28
+Layer Name: leaky_re_lu_93
+Layer Type: LeakyReLU
+Device: DPU
+Notes: 
+    1. Converted alpha 0.1 to 26./256. to match DPU implementation.
+Layer Config:
+{'alpha': 0.1015625,
+ 'dtype': 'float32',
+ 'name': 'leaky_re_lu_93',
+ 'trainable': True}
+________________________________________________________________________________________________________________________
+Layer ID: 29
+Layer Name: up_sampling2d_39
+Layer Type: UpSampling2D
+Device: DPU
+Notes: 
+    None
+Layer Config:
+{'data_format': 'channels_last',
+ 'dtype': 'float32',
+ 'interpolation': 'nearest',
+ 'name': 'up_sampling2d_39',
+ 'size': (2, 2),
+ 'trainable': True}
+________________________________________________________________________________________________________________________
+Layer ID: 30
+Layer Name: concatenate_49
+Layer Type: Concatenate
+Device: DPU
+Notes: 
+    None
+Layer Config:
+{'axis': -1, 'dtype': 'float32', 'name': 'concatenate_49', 'trainable': True}
+________________________________________________________________________________________________________________________
+Layer ID: 31
+Layer Name: conv2d_107
+Layer Type: Conv2D
+Device: DPU
+Notes: 
+    None
+Layer Config:
+{'activation': 'linear',
+ 'activity_regularizer': None,
+ 'bias_constraint': None,
+ 'bias_initializer': {'class_name': 'Zeros', 'config': {}},
+ 'bias_regularizer': None,
+ 'data_format': 'channels_last',
+ 'dilation_rate': (1, 1),
+ 'dtype': 'float32',
+ 'filters': 32,
+ 'groups': 1,
+ 'kernel_constraint': None,
+ 'kernel_initializer': {'class_name': 'GlorotUniform',
+                        'config': {'seed': None}},
+ 'kernel_regularizer': None,
+ 'kernel_size': (3, 3),
+ 'name': 'conv2d_107',
+ 'padding': 'same',
+ 'strides': (1, 1),
+ 'trainable': True,
+ 'use_bias': True}
+________________________________________________________________________________________________________________________
+Layer ID: 32
+Layer Name: leaky_re_lu_94
+Layer Type: LeakyReLU
+Device: DPU
+Notes: 
+    1. Converted alpha 0.1 to 26./256. to match DPU implementation.
+Layer Config:
+{'alpha': 0.1015625,
+ 'dtype': 'float32',
+ 'name': 'leaky_re_lu_94',
+ 'trainable': True}
+________________________________________________________________________________________________________________________
+Layer ID: 33
+Layer Name: conv2d_108
+Layer Type: Conv2D
+Device: DPU
+Notes: 
+    None
+Layer Config:
+{'activation': 'linear',
+ 'activity_regularizer': None,
+ 'bias_constraint': None,
+ 'bias_initializer': {'class_name': 'Zeros', 'config': {}},
+ 'bias_regularizer': None,
+ 'data_format': 'channels_last',
+ 'dilation_rate': (1, 1),
+ 'dtype': 'float32',
+ 'filters': 16,
+ 'groups': 1,
+ 'kernel_constraint': None,
+ 'kernel_initializer': {'class_name': 'GlorotUniform',
+                        'config': {'seed': None}},
+ 'kernel_regularizer': None,
+ 'kernel_size': (3, 3),
+ 'name': 'conv2d_108',
+ 'padding': 'same',
+ 'strides': (1, 1),
+ 'trainable': True,
+ 'use_bias': True}
+________________________________________________________________________________________________________________________
+Layer ID: 34
+Layer Name: leaky_re_lu_95
+Layer Type: LeakyReLU
+Device: DPU
+Notes: 
+    1. Converted alpha 0.1 to 26./256. to match DPU implementation.
+Layer Config:
+{'alpha': 0.1015625,
+ 'dtype': 'float32',
+ 'name': 'leaky_re_lu_95',
+ 'trainable': True}
+________________________________________________________________________________________________________________________
+Layer ID: 35
+Layer Name: conv2d_109
+Layer Type: Conv2D
+Device: DPU
+Notes: 
+    None
+Layer Config:
+{'activation': 'linear',
+ 'activity_regularizer': None,
+ 'bias_constraint': None,
+ 'bias_initializer': {'class_name': 'Zeros', 'config': {}},
+ 'bias_regularizer': None,
+ 'data_format': 'channels_last',
+ 'dilation_rate': (1, 1),
+ 'dtype': 'float32',
+ 'filters': 16,
+ 'groups': 1,
+ 'kernel_constraint': None,
+ 'kernel_initializer': {'class_name': 'GlorotUniform',
+                        'config': {'seed': None}},
+ 'kernel_regularizer': None,
+ 'kernel_size': (3, 3),
+ 'name': 'conv2d_109',
+ 'padding': 'same',
+ 'strides': (1, 1),
+ 'trainable': True,
+ 'use_bias': True}
+________________________________________________________________________________________________________________________
+Layer ID: 36
+Layer Name: leaky_re_lu_96
+Layer Type: LeakyReLU
+Device: DPU
+Notes: 
+    1. Converted alpha 0.1 to 26./256. to match DPU implementation.
+Layer Config:
+{'alpha': 0.1015625,
+ 'dtype': 'float32',
+ 'name': 'leaky_re_lu_96',
+ 'trainable': True}
+________________________________________________________________________________________________________________________
+Layer ID: 37
+Layer Name: flow
+Layer Type: Lambda
+Device: CPU
+Notes: 
+    None
+Layer Config:
+{'arguments': {},
+ 'dtype': 'float32',
+ 'function': ('4wEAAAAAAAAAAAAAAAEAAAAEAAAAUwAAAHMQAAAAfABkAWQAZAKFAmYCGQBTACkDTi7pAgAAAKkA\n'
+              'KQHaAXpyAgAAAHICAAAAeiEvdG1wL2lweWtlcm5lbF85Nzc2LzMwMTU3NzAyNDIucHnaCDxsYW1i\n'
+              'ZGE+KgAAAHMCAAAAEAA=\n',
+              None,
+              None),
+ 'function_type': 'lambda',
+ 'module': '__main__',
+ 'name': 'flow',
+ 'output_shape': None,
+ 'output_shape_module': None,
+ 'output_shape_type': 'raw',
+ 'trainable': True}
+________________________________________________________________________________________________________________________
+Layer ID: 38
+Layer Name: spatial_transformer_2
+Layer Type: SpatialTransformer
+Device: CPU
+Notes: 
+    None
+Layer Config:
+{'dtype': 'float32',
+ 'fill_value': None,
+ 'indexing': 'ij',
+ 'interp_method': 'linear',
+ 'name': 'spatial_transformer_2',
+ 'shift_center': True,
+ 'single_transform': False,
+ 'trainable': True}
+________________________________________________________________________________________________________________________

@@ -1,0 +1,8 @@
+{
+    "lib": "libvart-dpu-runner.so",
+    "filename": "vxm2d_kv260.xmodel",
+    "kernel": [
+        "subgraph_quant_concatenate_55"
+    ],
+    "target": "DPUCZDX8G_ISA1_B4096"
+}
