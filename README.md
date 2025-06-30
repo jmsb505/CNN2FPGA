@@ -1,4 +1,4 @@
-#CNN2FPGA
+CNN2FPGA
 
 Authors: Flipe Puente, Juan Martín Sánchez
 
